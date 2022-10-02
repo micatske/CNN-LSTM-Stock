@@ -12,8 +12,8 @@ import matplotlib.pyplot as plt
 #matplotlib inline
 plt.style.use("ggplot")
 
-import model as *
-import data_process as *
+import model
+from data_process import *
 
 import tensorflow as tf
 from tensorflow.keras.utils import plot_model
@@ -31,7 +31,7 @@ optimizer = tf.keras.optimizers.Adam(learning_rate=0.001)
 mymodel.compile(optimizer=optimizer, loss='mse', metrics=['mse', 'mae'])
 
 # %%
-history = mymodel.fit(x_close_train, y_close_train, validation_data=(x_close_test,y_close_test), epochs=50,batch_size=40, verbose=1, shuffle =True)
+history = mymodel.fit(x_close_train, y_close_train, validation_data=(x_close_val,y_close_val), epochs=50,batch_size=40, verbose=1, shuffle =True)
 
 # %%
 predicted=mymodel.predict(x_close_test)

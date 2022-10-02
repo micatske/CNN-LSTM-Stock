@@ -47,9 +47,16 @@ import tensorflow as tf
 
 # %%
 x_close_train, x_close_test, y_close_train, y_close_test = train_test_split(X_close, Y_close, test_size=0.2, random_state=42,shuffle=True)
+
+x_close_train, x_close_val, y_close_train, y_close_val = train_test_split(x_close_train,y_close_train, test_size=0.25, random_state=1) # 0.25 x 0.8 = 0.2
+    
 x_close_train, x_close_test, y_close_train, y_close_test=np.array(x_close_train),np.array(x_close_test),np.array(y_close_train),np.array(y_close_test)
+
 x_close_train=x_close_train.reshape(x_close_train.shape[0],1,window_size,1)
 x_close_test=x_close_test.reshape(x_close_test.shape[0],1,window_size,1)
+
+x_close_val,y_close_val=np.array(x_close_val),np.array(y_close_val)
+x_close_val=x_close_val.reshape(x_close_val.shape[0],1,window_size,1)
 
 # %%
 x_close_train.shape
