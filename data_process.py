@@ -30,7 +30,7 @@ from sklearn.model_selection import train_test_split
 
 X_close=[]
 Y_close=[]
-window_size=100
+window_size=30
 
 for i in range(1,len(df)-window_size):
     first=df.iloc[i,3]

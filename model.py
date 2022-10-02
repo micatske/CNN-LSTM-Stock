@@ -9,7 +9,7 @@ from tensorflow.keras.metrics import Accuracy
 from tensorflow.keras.metrics import RootMeanSquaredError
 import pydot
 from tensorflow.keras.models import Model
-
+from data_process import window_size
 # %%
 from tensorflow.keras.utils import plot_model
 import pydot
@@ -34,7 +34,7 @@ def attention_3d(inputs,single_attention_vector = False):
 
 # %%
 def build_model():
-    input_layer= tf.keras.Input(shape=(None,100, 1))
+    input_layer= tf.keras.Input(shape=(None,window_size, 1))
     
     #cov layers
     cov_1=TimeDistributed(Conv1D(64, kernel_size=3, activation='relu'))(input_layer)
