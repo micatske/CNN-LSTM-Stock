@@ -65,16 +65,3 @@ def build_model():
     return func_model
     
 
-# %%
-
-
-# %%
-
-
-# %%
-
-
-# %%
-
-
-

@@ -35,26 +35,19 @@ es  = tf.keras.callbacks.EarlyStopping(monitor='val_loss', patience=10, verbose=
 # %%
 history = mymodel.fit(x_close_train, y_close_train, validation_data=(x_close_val,y_close_val), epochs=50,batch_size=40, verbose=1, shuffle =True,callbacks=[es])
 
-# %%
-predicted=mymodel.predict(x_close_test)
-
-# %%
-predicted
-
-# %%
-loss,rmse,mae=mymodel.evaluate(x_close_test,y_close_test)
 
 # %%
 def plot_metrics(metric_name, title, ylim=2):
     plt.title(title)
     plt.ylim(0,ylim)
+    plt.title(sys.argv[2]+' Train Metrics')
     plt.plot(history.history[metric_name],color='blue',label=metric_name)
     plt.plot(history.history['val_' + metric_name],color='green',label='val_' + metric_name)
     plt.legend()
-    plt.show()
+    plt.savefig(results_dir+sys.argv[2]+'train.png')
 
 plt.figure(1)
-plot_metrics(metric_name='loss',title="Loss",ylim=0.02)
+plot_metrics(metric_name='loss',title="Loss",ylim=0.05)
 
 # %%
 
