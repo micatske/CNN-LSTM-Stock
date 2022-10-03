@@ -1,6 +1,6 @@
 # CNN-LSTM-Stock
 
-##Package dependence
+## Package dependence
 tensorflow==2.9.2
 
 ## Data
