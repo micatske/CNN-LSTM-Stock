@@ -1,6 +1,7 @@
 from train import mymodel
 from data_process import *
 import matplotlib.pyplot as plt
+from matplotlib.patches import Patch
 from packaging import version
 import os
 #matplotlib inline
@@ -24,7 +25,15 @@ for j in range(len_train,len_train+len(x_close_test)):
 
 
 #real stock loss
-plt.figure(2)
+fig, ax = plt.subplots()
+textstr = '\n'.join((
+    r'$\mathrm{RMSE}=%.5f$' % (rmse),
+     r'$\mathrm{MAE}=%.5f$' % (mae)))
+props = dict(boxstyle='round', facecolor='wheat', alpha=0.5)
+
+# place a text box in upper left in axes coords
+ax.text(0.75, 0.1, textstr, transform=ax.transAxes, fontsize=9,
+        verticalalignment='top', bbox=props)
 plt.plot(predicted, color = 'green', label = 'Predicted Price')
 plt.plot(test_label, color = 'red', label = 'Real Price')
 plt.title(sys.argv[2]+' Price Prediction')
