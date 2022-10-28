@@ -47,7 +47,7 @@ def plot_metrics(metric_name, title, ylim=2):
     plt.savefig(results_dir+sys.argv[2]+'train.png')
 
 plt.figure(1)
-plot_metrics(metric_name='loss',title="Loss",ylim=0.05)
+plot_metrics(metric_name='loss',title="Loss",ylim=11)
 
 # %%
 

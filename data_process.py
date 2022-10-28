@@ -47,7 +47,7 @@ if  df_type=="index":
 
 from sklearn.model_selection import train_test_split
 
-window_size=30
+window_size=100
 def data_window(df):
     X_close=[]
     Y_close=[]
@@ -63,12 +63,16 @@ def data_window(df):
         Y_close.append(np.array(temp2).reshape(1,1))
     return X_close,Y_close
 
-#X_close,Y_close=data_window(df_index)
+
 X_close,Y_close=data_window(df)
 # %%
-x_close_train, x_close_test, y_close_train, y_close_test = train_test_split(X_close, Y_close, test_size=0.2, random_state=42,shuffle=True)
 
-x_close_train, x_close_val, y_close_train, y_close_val = train_test_split(x_close_train,y_close_train, test_size=0.25, random_state=1) # 0.25 x 0.8 = 0.2
+n=len(X_close)
+split=int(n*0.8)
+x_close_train, x_close_test, y_close_train, y_close_test =X_close[:split],X_close[split:],Y_close[:split],Y_close[split:]
+
+var=int(split*0.8)
+x_close_train, x_close_val, y_close_train, y_close_val = x_close_train[:var],x_close_train[var:],y_close_train[:var],y_close_train[var:]
     
 x_close_train, x_close_test, y_close_train, y_close_test=np.array(x_close_train),np.array(x_close_test),np.array(y_close_train),np.array(y_close_test)
 
