@@ -32,5 +32,8 @@ We use a CNN-LSTM based model to predict stock with an attention layer. We start
 
 ## Training and Testing Result
 
-![GOOG](results/TSLAtrain.png)
-![RESG](results/TSLA.png)
+![TELA](results/TSLAtrain.png)
+![REST](results/TSLA.png)
+
+![GOOG](results/GOOG.png)
+![RESG](results/GOOGtrain.png)
